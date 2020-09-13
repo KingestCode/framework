@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018???5???5??? ??????10:52:48 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.miaoqi.domain.Customer" table="customer">
+        <id name="custId">
+            <generator class="native"/>
+        </id>
+        <property name="custName"/>
+        <property name="address"/>
+    </class>
+</hibernate-mapping>
