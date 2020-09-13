@@ -1,0 +1,7 @@
+create database spring4_day03;
+use spring4_day03;
+create table account(
+    id int primary key auto_increment,
+    name varchar(20),
+    money double
+);

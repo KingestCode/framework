@@ -1,0 +1,59 @@
+﻿http://note.youdao.com/noteshare?id=a64434eebe60e55838be601525a73858
+
+
+异常
+	java 异常是程序运行过程中出现的错误。异常类Exception又分为运行时异常(RuntimeException)和非运行时异常(非runtimeException)
+	Error与Exception 
+	Error是程序无法处理的错误，比如OutOfMemoryError、ThreadDeath等。
+	这些异常发生时，Java虚拟机（JVM）一般会选择线程终止。
+	Exception是程序本身可以处理的异常，这种异常分两大类运行时异常和非运行时异常。程序中应当尽可能去处理这些异常。
+	
+		运行时异常和非运行时异常      
+			运行时异常: 都是RuntimeException类及其子类异常：				   				
+				IndexOutOfBoundsException 索引越界异常
+				ArithmeticException：数学计算异常
+				NullPointerException：空指针异常
+				ArrayOutOfBoundsException：数组索引越界异常
+				ClassNotFoundException：类文件未找到异常
+				ClassCastException：造型异常（类型转换异常）
+			
+			这些异常是不检查异常（Unchecked Exception），程序中可以选择捕获处理，也可以不处理。这些异常一般是由程序逻辑错误引起的。
+			
+		非运行时异常:是RuntimeException以外的异常，类型上都属于Exception类及其子类。从程序语法角度讲是必须进行处理的异常，如果不处理，程序就不能编译通过。
+			如：
+				IOException、文件读写异常
+				FileNotFoundException：文件未找到异常
+			 	EOFException：读写文件尾异常
+				MalformedURLException：URL格式错误异常
+				SocketException：Socket异常
+				SQLException：SQL数据库异常
+ 
+
+
+
+
+
+
+
+
+图片解析器参数解释:
+	defaultEncoding="UTF-8" 是请求的编码格式，默认为iso-8859-1
+	maxUploadSize="5400000" 是上传文件的大小，单位为字节B(5M)
+	uploadTempDir="fileUpload/temp" 为上传文件的临时路径\
+
+
+
+
+
+url-pattern
+
+	<url-pattern> .action或者.do </url-pattern> 只拦截请求后缀为.action或者.do为后缀的请求
+
+	<url-pattern> / </ url-pattern>  不会匹配到*.jsp，即：*.jsp不会进入spring的 DispatcherServlet类 。
+		(.html	.css	.js 	.png	.jpg)
+
+	<url-pattern> /* </url-pattern> 会匹配*.jsp，会出现返回jsp视图时再次进入spring的DispatcherServlet 类，导致找不到对应的controller所以报404错。 
+		(.html	.css	.js 	.png	.jpg 	.jsp)
+
+
+

@@ -1,0 +1,67 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <!-- 处理器的位置 扫描处理器(包) -->
+    <context:component-scan base-package="com.miaoqi.springmvc.controller"/>
+
+
+    <!-- 配置处理器映射器 -->
+    <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"
+        /> -->
+
+    <!-- 配置处理器适配器 -->
+    <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
+        /> -->
+
+    <mvc:annotation-driven/>
+
+
+    <!-- 配置视图解析器 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 前缀 -->
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!-- 配置异常处理器 -->
+    <bean id="handlerExceptionResolver"
+          class="com.miaoqi.springmvc.exception.MyHandlerExceptionResolver"></bean>
+
+    <!-- 配置图片解析器 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置上传文件的最大尺寸为5MB B 1024*1024*5 -->
+        <property name="maxUploadSize" value="5242880"/>
+    </bean>
+
+    <!-- 对静态资源放行 location: 项目路径 mapping:放行的资源 -->
+    <mvc:resources location="/js/" mapping="/js/**"/>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <!-- 第一个 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.miaoqi.springmvc.interceptor.MyInterceptor1"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.miaoqi.springmvc.interceptor.MyInterceptor2"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>

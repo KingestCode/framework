@@ -1,0 +1,22 @@
+Spring MVC 和 struts2
+
+	1	从设计原理上讲
+		spring mvc 单例 非线程安全
+		struts2	多例	线程安全	对每个请求都产生一个实例
+	2	从请求入口以及前端总控制器说
+		spring mvc的入口是servlet，而struts2是filter
+		spring mvc 的前端总控制器为 DispatcherServlet
+		struts2 的前端总控制器为 FilterDispatcher (StrutsPrepareAndExecuteFilter)
+	3	从参数传递上
+		struts是在接受参数的时候，可以用属性来接受参数，这就说明参数是让多个方法共享的。
+		springmvc 用方法来接受参数
+	4	从设计模式上
+		spring mvc是基于方法的设计,而sturts是基于类
+
+SpringMVC运行原理:
+整个处理过程从一个HTTP请求开始：
+1.Tomcat在启动时加载解析web.xml,找到spring mvc的前端总控制器DispatcherServlet,并且通过DispatcherServlet来加载相关的配置文件信息。
+2.DispatcherServlet接收到客户端请求，找到对应HandlerMapping，根据映射规则，找到对应的
+处理器（Handler）。
+3.调用相应处理器中的处理方法，处理该请求后，会返回一个ModelAndView。
+4.DispatcherServlet根据得到的ModelAndView中的视图对象，找到一个合适的ViewResolver（视图解析器），根据视图解析器的配置，DispatcherServlet将要显示的数据传给对应的视图，最后显示给用户。
