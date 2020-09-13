@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.action.extension" value="action"></constant>
+    <include file="com/miaoqi/struts/demo1/struts-demo1.xml"></include>
+    <include file="com/miaoqi/struts/demo2/struts-demo2.xml"></include>
+    <include file="com/miaoqi/struts/demo3/struts-demo3.xml"></include>
+</struts>

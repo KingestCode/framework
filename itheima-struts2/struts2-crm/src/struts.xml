@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.action.extension" value="action"></constant>
+
+    <package name="crm" extends="struts-default" namespace="/">
+        <action name="customer_*" class="com.miaoqi.web.action.CustomerAction" method="{1}">
+            <result name="findSuccess">/jsp/customer/list.jsp</result>
+            <result name="saveUI">/jsp/customer/add.jsp</result>
+            <result name="saveSuccess" type="redirectAction">customer_find.action</result>
+            <!-- 
+            不在同一名称空间下的重定向
+            <result name="saveSuccess" type="redirectAction">
+                <param name="namespace">/xxx</param>
+                <param name="actionName">linkMan_xxx.action</param>
+            </result>
+             -->
+        </action>
+    </package>
+
+</struts>
