@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.miaoqi</groupId>
-        <artifactId>ssh-parent</artifactId>
+        <artifactId>itheima-ssh-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>ssh-service</artifactId>
