@@ -1,8 +1,11 @@
 package com.miaoqi.imooc.netty.ch3;
 
-import com.imooc.netty.ch6.AuthHandler;
+import com.miaoqi.imooc.netty.ch6.AuthHandler;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -21,15 +24,17 @@ public final class Server {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
+                    // 为客户端连接设置 TCP 属性
                     .childOption(ChannelOption.TCP_NODELAY, true)
+                    // 为客户端连接绑定基本属性
                     .childAttr(AttributeKey.newInstance("childAttr"), "childAttrValue")
+                    // 服务端逻辑
                     .handler(new ServerHandler())
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) {
                             ch.pipeline().addLast(new AuthHandler());
                             //..
-
                         }
                     });
 
