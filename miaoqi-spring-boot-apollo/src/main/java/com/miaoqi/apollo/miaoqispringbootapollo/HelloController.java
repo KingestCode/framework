@@ -6,13 +6,24 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-public class HelloController {
+public class HelloController extends AbstractController {
 
     private static Logger logger = (Logger) LoggerFactory.getLogger(HelloController.class);
 
     @Value("${server.port}")
     String port;
+
+    // @Value("${childField:childField}")
+    public String testField;
+
+    @Value("${x.list:2,3,4}")
+    public List<Integer> list;
+
+    // @Value("${x.map:'{}'}")
+    // public Map map;
 
     @GetMapping("/hi")
     public String hi() {
@@ -22,6 +33,13 @@ public class HelloController {
         logger.warn("warn log...");
 
         return "hi, i am from port: " + this.port;
+    }
+
+    @GetMapping("/testfield")
+    public String testField() {
+        System.out.println("list: " + this.list);
+        // System.out.println("map: " + this.map);
+        return this.testField;
     }
 
 }
