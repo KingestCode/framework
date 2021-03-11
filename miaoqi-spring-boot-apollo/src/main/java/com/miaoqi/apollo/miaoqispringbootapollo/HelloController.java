@@ -19,8 +19,7 @@ public class HelloController extends AbstractController {
     // @Value("${childField:childField}")
     public String testField;
 
-    @Value("${x.list:2,3,4}")
-    public List<Integer> list;
+    public List<String> list;
 
     // @Value("${x.map:'{}'}")
     // public Map map;
@@ -38,8 +37,15 @@ public class HelloController extends AbstractController {
     @GetMapping("/testfield")
     public String testField() {
         System.out.println("list: " + this.list);
+        System.out.println(this.list.get(0));
         // System.out.println("map: " + this.map);
         return this.testField;
+    }
+
+    @Value("${x.list:2,3,4}")
+    public void setList(List<String> list) {
+        System.out.println("asf,pamf");
+        this.list = list;
     }
 
 }
