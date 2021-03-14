@@ -60,6 +60,7 @@ public class GroupChatServer {
                             sc.configureBlocking(false);
                             //将该 sc 注册到seletor
                             sc.register(selector, SelectionKey.OP_READ);
+                            System.out.println(sc.hashCode());
 
                             //提示
                             System.out.println(sc.getRemoteAddress() + " 上线 ");
@@ -98,6 +99,7 @@ public class GroupChatServer {
         try {
            //得到channel
             channel = (SocketChannel) key.channel();
+            System.out.println(channel.hashCode());
             //创建buffer
             ByteBuffer buffer = ByteBuffer.allocate(1024);
 

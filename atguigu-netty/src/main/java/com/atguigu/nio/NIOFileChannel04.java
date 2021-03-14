@@ -13,7 +13,7 @@ public class NIOFileChannel04 {
 
         //获取各个流对应的filechannel
         FileChannel sourceCh = fileInputStream.getChannel();
-        FileChannel destCh = fileOutputStqream.getChannel();
+        FileChannel destCh = fileOutputStream.getChannel();
 
         //使用transferForm完成拷贝
         destCh.transferFrom(sourceCh,0,sourceCh.size());
