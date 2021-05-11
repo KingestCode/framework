@@ -19,6 +19,7 @@ public class HelloController extends AbstractController {
     // @Value("${childField:childField}")
     public String testField;
 
+    @Value("#{'${list:1}'.split(',')}")
     public List<String> list;
 
     // @Value("${x.map:'{}'}")
@@ -42,10 +43,23 @@ public class HelloController extends AbstractController {
         return this.testField;
     }
 
-    @Value("${x.list:2,3,4}")
-    public void setList(List<String> list) {
-        System.out.println("asf,pamf");
-        this.list = list;
-    }
+    // @Value("${x.list:2,3,4}")
+    // public void setList(List<String> list) {
+    //     System.out.println("asf,pamf");
+    //     this.list = list;
+    // }
+
+    // @Value("#{'${list}'.split(',')}")
+    // private List<String> list;
+    //
+    // @Value("#{${maps}}")
+    // private Map<String,String> maps;
+    //
+    // @Value("#{${redirectUrl}}")
+    // private Map<String,String> redirectUrl;
+    //
+    // list: topic1,topic2,topic3
+    // maps: "{key1: 'value1', key2: 'value2'}"
+    // redirectUrl: "{sso_client_id: '${id}',sso_client_secret: '${secret}',redirect_url: '${client.main.url.default}'}"
 
 }
