@@ -1,0 +1,65 @@
+## SpringCloud
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>Hoxton.SR4</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+## Config Server
+
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+
+spring.application.name=config-server
+server.port=8900
+spring.cloud.config.server.git.uri=https://github.com/jiangzh292679/imooc_conf.git
+spring.cloud.config.label=master
+spring.cloud.config.server.git.username=3078956183@qq.com
+spring.cloud.config.server.git.password=imooc_jiangzh001
+
+## 验证config server
+http://localhost:8900/kafka/master
+
+
+## Config Client
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+</dependency>
+
+bootstrap.yml配置：
+
+spring:
+	application:
+		name: kafka
+	cloud:
+		config:
+			uri: http://localhost:8900/
+			label: master
+			
+			
+## 动态刷新配置依赖
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+## 增加访问point
+management.endpoints.web.exposure.include=health, info, refresh
+
+post请求访问/actuator/refresh
+
+curl -XPOST http://localhost:7002/actuator/refresh

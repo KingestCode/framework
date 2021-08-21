@@ -1,0 +1,5 @@
+cnpm install -g @tarojs/cli@2.0.6
+
+cnpm install
+
+npm run build:weapp

@@ -12,7 +12,7 @@ public class NettyClient {
     public static void main(String[] args) throws Exception {
 
         //客户端需要一个事件循环组
-        EventLoopGroup group = new NioEventLoopGroup();
+        EventLoopGroup group = new NioEventLoopGroup(2);
 
 
         try {
